@@ -90,20 +90,14 @@ extension MemeViewController: UITextFieldDelegate {
 }
 
 // MARK: - UINavigationControllerDelegate
-extension MemeViewController: UINavigationControllerDelegate {
-    
-    
-    
-}
+extension MemeViewController: UINavigationControllerDelegate {}
+
 
 // MARK: - UIImagePickerControllerDelegate
 extension MemeViewController: UIImagePickerControllerDelegate {
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        if let image = info[UIImagePickerControllerEditedImage] as? UIImage {
-            imageView.image = image
-        }
-        else if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
+        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             imageView.image = image
         }
         self.dismiss(animated: true, completion: nil)
@@ -112,11 +106,7 @@ extension MemeViewController: UIImagePickerControllerDelegate {
 }
 
 // MARK: - Public functions
-extension MemeViewController {
-    
-    
-    
-}
+extension MemeViewController {}
 
 
 // MARK: - Private functions
