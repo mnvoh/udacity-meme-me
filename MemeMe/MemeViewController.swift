@@ -24,6 +24,10 @@ class MemeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if !UIImagePickerController.isSourceTypeAvailable(.camera) {
+            cameraButton.isEnabled = false
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -47,6 +51,15 @@ class MemeViewController: UIViewController {
     
     @IBAction func loadImageFromGallery(_ sender: UIBarButtonItem) {
     }
+}
+
+// MARK: - TextField Delegate
+extension MemeViewController: UITextFieldDelegate {
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        textField.text = ""
+    }
+    
 }
 
 // MARK: - Public functions
