@@ -19,9 +19,16 @@ class MemeViewController: UIViewController {
     @IBOutlet weak var topText: UITextField!
     @IBOutlet weak var bottomText: UITextField!
     @IBOutlet weak var toolbar: UIToolbar!
+    @IBOutlet weak var bottomTextBottomConstraint: NSLayoutConstraint!
     
     // MARK: - Properties
     let bottomTextTag = 1
+    
+    // When the keyboard is about to be shown, we save the current constant
+    // for the mentioned constraint in this variable, set its value to something
+    // smaller, and then when the keyboard is about to be hidden again, we set
+    // the constant back to its original value, which is stored in this variable.
+    var bottomTextBottomConstraintConstant: CGFloat = 0
     
     // Each time a text field is selected for editing, this var gets updated
     // so that we can determine whether we need to shift the view up or not.
@@ -281,12 +288,15 @@ extension MemeViewController {
         }
         
         if let userInfo = notification.userInfo {
+            bottomTextBottomConstraintConstant = bottomTextBottomConstraint.constant
+            bottomTextBottomConstraint.constant = 8
             let keyboardSize = userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue
             view.frame.origin.y = -keyboardSize.cgRectValue.height
         }
     }
     
     @objc fileprivate func keyboardWillDisappear() {
+        bottomTextBottomConstraint.constant = bottomTextBottomConstraintConstant
         view.frame.origin.y = 0
     }
     

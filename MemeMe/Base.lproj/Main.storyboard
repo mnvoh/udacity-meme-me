@@ -88,6 +88,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="bottomText" destination="ga5-uc-aZ3" id="QHh-YG-b8M"/>
+                        <outlet property="bottomTextBottomConstraint" destination="rgh-05-pLT" id="6Ug-77-W27"/>
                         <outlet property="cameraButton" destination="8Lu-ZG-Ab8" id="aIS-hk-6D1"/>
                         <outlet property="imageView" destination="Xps-fW-Ra9" id="dq3-v3-0N6"/>
                         <outlet property="shareButton" destination="KfK-Qe-4mX" id="jYh-Z1-8co"/>
