@@ -43,14 +43,14 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="xH4-C8-AID"/>
                                 </items>
                             </toolbar>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="7kH-Bd-NyC">
-                                <rect key="frame" x="16" y="94" width="288" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP" textAlignment="center" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="7kH-Bd-NyC">
+                                <rect key="frame" x="16" y="94" width="288" height="32"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" returnKeyType="done"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="ga5-uc-aZ3">
-                                <rect key="frame" x="16" y="444" width="288" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="BOTTOM" textAlignment="center" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="ga5-uc-aZ3">
+                                <rect key="frame" x="16" y="442" width="288" height="32"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" returnKeyType="done"/>
@@ -75,7 +75,7 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="MemeMe" id="9NF-7f-Ozw">
-                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="action" id="KfK-Qe-4mX">
+                        <barButtonItem key="leftBarButtonItem" systemItem="action" id="KfK-Qe-4mX">
                             <connections>
                                 <action selector="share:" destination="BYZ-38-t0r" id="we2-bc-2OP"/>
                             </connections>
@@ -91,6 +91,7 @@
                         <outlet property="cameraButton" destination="8Lu-ZG-Ab8" id="aIS-hk-6D1"/>
                         <outlet property="imageView" destination="Xps-fW-Ra9" id="dq3-v3-0N6"/>
                         <outlet property="shareButton" destination="KfK-Qe-4mX" id="jYh-Z1-8co"/>
+                        <outlet property="toolbar" destination="Qc2-DJ-hvy" id="twz-zF-8At"/>
                         <outlet property="topText" destination="7kH-Bd-NyC" id="JqD-UA-ml7"/>
                     </connections>
                 </viewController>

@@ -18,12 +18,14 @@ class MemeViewController: UIViewController {
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     @IBOutlet weak var topText: UITextField!
     @IBOutlet weak var bottomText: UITextField!
-    
-    @IBOutlet weak var topTextTopConstraint: NSLayoutConstraint!
-    @IBOutlet weak var bottomTextBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var toolbar: UIToolbar!
     
     // MARK: - Properties
     let bottomTextTag = 1
+    
+    // Each time a text field is selected for editing, this var gets updated
+    // so that we can determine whether we need to shift the view up or not.
+    var textFieldWithFocusTag = 0
     
     enum MediaTypes: String {
         case camera = "Camera"
@@ -35,8 +37,10 @@ class MemeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        topText.delegate = self
-        bottomText.delegate = self
+        setupTextField(topText)
+        setupTextField(bottomText)
+        topText.text = "TOP"
+        bottomText.text = "BOTTOM"
         
         shareButton.isEnabled = false
         
@@ -51,19 +55,28 @@ class MemeViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        // TODO: Add keyboard observer
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillAppear(_:))
+            , name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillDisappear)
+            , name: .UIKeyboardWillHide, object: nil)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
-        // TODO: Remove keyboard observer
+        NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillHide, object: nil)
     }
     
     // MARK: - IBActions
     
     @IBAction func share(_ sender: UIBarButtonItem) {
+        
     }
     
     @IBAction func cancel(_ sender: UIBarButtonItem) {
+        imageView.image = nil
+        topText.text = "TOP"
+        bottomText.text = "BOTTOM"
+        shareButton.isEnabled = false
     }
     
     @IBAction func loadImageFromCamera(_ sender: UIBarButtonItem) {
@@ -90,6 +103,7 @@ class MemeViewController: UIViewController {
 extension MemeViewController: UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
+        textFieldWithFocusTag = textField.tag
         textField.text = ""
     }
     
@@ -123,6 +137,24 @@ extension MemeViewController {}
 
 // MARK: - Private functions
 extension MemeViewController {
+    
+    fileprivate func setupTextField(_ textField: UITextField) {
+        textField.delegate = self
+        
+        let paraStyle = NSMutableParagraphStyle()
+        paraStyle.alignment = NSTextAlignment.center
+        
+        let attributes: [String : Any] = [
+            NSStrokeWidthAttributeName: -4.0,
+            NSStrokeColorAttributeName: UIColor.black,
+            NSForegroundColorAttributeName: UIColor.white,
+            NSParagraphStyleAttributeName: paraStyle,
+            NSObliquenessAttributeName: 0.0,
+            NSFontAttributeName: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
+        ]
+        
+        textField.defaultTextAttributes = attributes
+    }
 
     fileprivate func checkForCameraPermission() {
         // get the current authorization status of camera access
@@ -207,11 +239,33 @@ extension MemeViewController {
         }
     }
     
-    /// This function will recalculate the correct constant values
-    /// for the text views' constraints, so that they will fall over
-    /// the image inside the imageView
-    fileprivate func updateTextFieldsConstraints() {
+    @objc fileprivate func keyboardWillAppear(_ notification: Notification) {
+        // if the top text field is being edited, we don't wanna move the view
+        if textFieldWithFocusTag != bottomTextTag {
+            return
+        }
         
+        if let userInfo = notification.userInfo {
+            let keyboardSize = userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue
+            view.frame.origin.y = -keyboardSize.cgRectValue.height
+        }
+    }
+    
+    @objc fileprivate func keyboardWillDisappear() {
+        view.frame.origin.y = 0
+    }
+    
+    fileprivate func generateMemedImage() -> UIImage {
+        toolbar.isHidden = true
+        
+        UIGraphicsBeginImageContext(view.frame.size)
+        view.drawHierarchy(in: view.frame, afterScreenUpdates: true)
+        let memedImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        
+        toolbar.isHidden = false
+        
+        return memedImage
     }
 }
 
