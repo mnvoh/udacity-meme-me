@@ -20,4 +20,12 @@ struct Meme {
         self.originalImage = originalImage
         self.memedImage = memedImage
     }
+    
+    func getShareableObject() -> [AnyObject] {
+        var retval = [AnyObject]()
+        
+        retval.append(memedImage)
+        
+        return retval
+    }
 }
