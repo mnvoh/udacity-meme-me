@@ -19,7 +19,11 @@ class MemeViewController: UIViewController {
     @IBOutlet weak var topText: UITextField!
     @IBOutlet weak var bottomText: UITextField!
     
+    @IBOutlet weak var topTextTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var bottomTextBottomConstraint: NSLayoutConstraint!
+    
     // MARK: - Properties
+    let bottomTextTag = 1
     
     enum MediaTypes: String {
         case camera = "Camera"
@@ -33,6 +37,8 @@ class MemeViewController: UIViewController {
         
         topText.delegate = self
         bottomText.delegate = self
+        
+        shareButton.isEnabled = false
         
         // check to see if we've been granted permission or not.
         // this function will set the enabled status of the camera 
@@ -87,6 +93,10 @@ extension MemeViewController: UITextFieldDelegate {
         textField.text = ""
     }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return false
+    }
 }
 
 // MARK: - UINavigationControllerDelegate
@@ -101,6 +111,8 @@ extension MemeViewController: UIImagePickerControllerDelegate {
             imageView.image = image
         }
         self.dismiss(animated: true, completion: nil)
+        
+        shareButton.isEnabled = true
     }
     
 }
@@ -195,5 +207,11 @@ extension MemeViewController {
         }
     }
     
+    /// This function will recalculate the correct constant values
+    /// for the text views' constraints, so that they will fall over
+    /// the image inside the imageView
+    fileprivate func updateTextFieldsConstraints() {
+        
+    }
 }
 

@@ -43,34 +43,34 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="xH4-C8-AID"/>
                                 </items>
                             </toolbar>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7kH-Bd-NyC">
-                                <rect key="frame" x="16" y="84" width="288" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="7kH-Bd-NyC">
+                                <rect key="frame" x="16" y="94" width="288" height="30"/>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" returnKeyType="done"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ga5-uc-aZ3">
-                                <rect key="frame" x="16" y="474" width="288" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="ga5-uc-aZ3">
+                                <rect key="frame" x="16" y="444" width="288" height="30"/>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" returnKeyType="done"/>
                             </textField>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="Xps-fW-Ra9" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="A4p-oz-9xa"/>
-                            <constraint firstItem="7kH-Bd-NyC" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="BqV-BX-ZGB"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Qc2-DJ-hvy" secondAttribute="bottom" id="DQn-uG-tuu"/>
-                            <constraint firstItem="Qc2-DJ-hvy" firstAttribute="top" secondItem="ga5-uc-aZ3" secondAttribute="bottom" constant="20" id="Gww-Ii-j0t"/>
-                            <constraint firstItem="Xps-fW-Ra9" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="QLq-3b-SzT"/>
-                            <constraint firstItem="ga5-uc-aZ3" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Qan-mb-OPi"/>
-                            <constraint firstItem="7kH-Bd-NyC" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="YVt-J2-ERf"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Xps-fW-Ra9" secondAttribute="bottom" id="cM8-Ft-Mj9"/>
-                            <constraint firstAttribute="trailing" secondItem="Xps-fW-Ra9" secondAttribute="trailing" id="gyF-gO-hqj"/>
-                            <constraint firstItem="7kH-Bd-NyC" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="j8n-DA-QB1"/>
-                            <constraint firstItem="ga5-uc-aZ3" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="jDg-CE-msw"/>
-                            <constraint firstAttribute="trailing" secondItem="Qc2-DJ-hvy" secondAttribute="trailing" id="skA-CN-r4V"/>
-                            <constraint firstItem="Qc2-DJ-hvy" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="syj-Wt-kt6"/>
+                            <constraint firstItem="Qc2-DJ-hvy" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="9mJ-Gm-1dN"/>
+                            <constraint firstItem="Xps-fW-Ra9" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Cne-pn-f2a"/>
+                            <constraint firstAttribute="trailing" secondItem="Qc2-DJ-hvy" secondAttribute="trailing" id="Rab-ve-uBL"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Qc2-DJ-hvy" secondAttribute="bottom" id="TCF-8E-HzA"/>
+                            <constraint firstItem="Xps-fW-Ra9" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="bEo-vJ-HJn"/>
+                            <constraint firstItem="ga5-uc-aZ3" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="d1e-pE-VWH"/>
+                            <constraint firstItem="7kH-Bd-NyC" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="eFQ-Tj-7Qr"/>
+                            <constraint firstAttribute="trailing" secondItem="Xps-fW-Ra9" secondAttribute="trailing" id="ggD-Rq-eee"/>
+                            <constraint firstItem="ga5-uc-aZ3" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="htk-0D-QMX"/>
+                            <constraint firstItem="7kH-Bd-NyC" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="qhS-P6-aSz"/>
+                            <constraint firstItem="Qc2-DJ-hvy" firstAttribute="top" secondItem="ga5-uc-aZ3" secondAttribute="bottom" constant="50" id="rgh-05-pLT"/>
+                            <constraint firstItem="7kH-Bd-NyC" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="30" id="tlr-1I-LkK"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Xps-fW-Ra9" secondAttribute="bottom" id="wxH-Tw-enI"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
