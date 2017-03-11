@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1120AFE31E73F7860000F17E /* Meme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1120AFE21E73F7860000F17E /* Meme.swift */; };
 		11EC9AFE1E733FB3000D1994 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EC9AFD1E733FB3000D1994 /* AppDelegate.swift */; };
 		11EC9B001E733FB3000D1994 /* MemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EC9AFF1E733FB3000D1994 /* MemeViewController.swift */; };
 		11EC9B031E733FB3000D1994 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11EC9B011E733FB3000D1994 /* Main.storyboard */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1120AFE21E73F7860000F17E /* Meme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Meme.swift; sourceTree = "<group>"; };
 		11EC9AFA1E733FB3000D1994 /* MemeMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MemeMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		11EC9AFD1E733FB3000D1994 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		11EC9AFF1E733FB3000D1994 /* MemeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeViewController.swift; sourceTree = "<group>"; };
@@ -60,6 +62,7 @@
 				11EC9B041E733FB3000D1994 /* Assets.xcassets */,
 				11EC9B061E733FB3000D1994 /* LaunchScreen.storyboard */,
 				11EC9B091E733FB3000D1994 /* Info.plist */,
+				1120AFE21E73F7860000F17E /* Meme.swift */,
 			);
 			path = MemeMe;
 			sourceTree = "<group>";
@@ -137,6 +140,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1120AFE31E73F7860000F17E /* Meme.swift in Sources */,
 				11EC9B001E733FB3000D1994 /* MemeViewController.swift in Sources */,
 				11EC9AFE1E733FB3000D1994 /* AppDelegate.swift in Sources */,
 			);
@@ -302,6 +306,7 @@
 				11EC9B0E1E733FB3000D1994 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
