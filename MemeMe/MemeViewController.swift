@@ -79,16 +79,21 @@ class MemeViewController: UIViewController {
         }
         
         let memedImage = generateMemedImage()
-        let meme = Meme(topText: topText, bottomText: bottomText, originalImage: originalImage,
-                        memedImage: memedImage)
         
         // now we start an activity view controller to share the image
-        let activityViewController = UIActivityViewController(activityItems: meme.getShareableObject(),
+        let activityViewController = UIActivityViewController(activityItems: [memedImage],
                                                               applicationActivities: nil)
-        activityViewController.popoverPresentationController?.sourceView = view
-        present(activityViewController, animated: true) {
-            // sharing was finished
+        activityViewController.completionWithItemsHandler = {
+            (activity: UIActivityType?, completed: Bool, items: [Any]?, error: Error?) in
+            guard completed, error == nil else {
+                return
+            }
+            let meme = Meme(topText: topText, bottomText: bottomText, originalImage: originalImage,
+                            memedImage: memedImage)
+            meme.save()
         }
+        activityViewController.popoverPresentationController?.sourceView = view
+        present(activityViewController, animated: true, completion: nil)
     }
     
     @IBAction func cancel(_ sender: UIBarButtonItem) {
