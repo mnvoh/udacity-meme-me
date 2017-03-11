@@ -44,14 +44,9 @@ class MemeViewController: UIViewController {
         
         shareButton.isEnabled = false
         
-        // check to see if we've been granted permission or not.
-        // this function will set the enabled status of the camera 
-        // button.
-        checkForCameraPermission()
-        
-        // Check to see if we have access to the photo library
-        checkForPhotoLibraryPermission()
-        
+        if !UIImagePickerController.isSourceTypeAvailable(.camera) {
+            cameraButton.isEnabled = false
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -104,22 +99,11 @@ class MemeViewController: UIViewController {
     }
     
     @IBAction func loadImageFromCamera(_ sender: UIBarButtonItem) {
-        // first check to see if we have permission
-        checkForCameraPermission()
-        
-        // load an image from the camera
-        let imagePicker = UIImagePickerController()
-        imagePicker.sourceType = .camera
-        imagePicker.delegate = self
-        present(imagePicker, animated: true, completion: nil)
+        loadPhoto(from: .camera)
     }
     
     @IBAction func loadImageFromGallery(_ sender: UIBarButtonItem) {
-        // load an image from the gallery
-        let imagePicker = UIImagePickerController()
-        imagePicker.sourceType = .photoLibrary
-        imagePicker.delegate = self
-        present(imagePicker, animated: true, completion: nil)
+        loadPhoto(from: .photoLibrary)
     }
 }
 
@@ -180,47 +164,50 @@ extension MemeViewController {
         textField.defaultTextAttributes = attributes
     }
 
-    fileprivate func checkForCameraPermission() {
+    fileprivate func checkForCameraPermission() -> Bool{
         // get the current authorization status of camera access
         let permissionStatus = AVCaptureDevice.authorizationStatus(forMediaType: AVMediaTypeVideo)
         
         switch permissionStatus {
         case .authorized:
             // Already authorized. Nothing to do.
-            break
+            return true
         case .denied:
             // The user has previously opted to deny access, 
             // so we'll ask her to open settings and grant it.
             requestAccess(alreadyMade: true, mediaType: .camera)
+            return false
         case .notDetermined:
             // The status is not determined, i.e. it has neither been
             // granted nor denied, which means it's the first time this
             // process is occuring. So ask for permission
             requestAccess(alreadyMade: false, mediaType: .camera)
+            return false
         default:
-            break
+            return false
         }
     }
     
-    fileprivate func checkForPhotoLibraryPermission() {
+    fileprivate func checkForPhotoLibraryPermission() -> Bool {
         let permissionStatus = PHPhotoLibrary.authorizationStatus()
         
         switch permissionStatus {
         case .authorized:
             // Already authorized. Nothing to do.
-            break
+            return true
         case .denied:
             // The user has previously opted to deny access,
             // so we'll ask her to open settings and grant it.
-            cameraButton.isEnabled = false
             requestAccess(alreadyMade: true, mediaType: .photoLibrary)
+            return false
         case .notDetermined:
             // The status is not determined, i.e. it has neither been
             // granted nor denied, which means it's the first time this
             // process is occuring. So ask for permission
             requestAccess(alreadyMade: false, mediaType: .photoLibrary)
+            return false
         default:
-            break
+            return false
         }
     }
     
@@ -239,8 +226,8 @@ extension MemeViewController {
             switch mediaType {
             case .camera:
                 AVCaptureDevice.requestAccess(forMediaType: AVMediaTypeVideo) { (newStatus: Bool) in
-                    if !newStatus {
-                        self.cameraButton.isEnabled = false
+                    if newStatus {
+                        self.loadPhoto(from: .camera)
                     }
                 }
             case .photoLibrary:
@@ -248,7 +235,11 @@ extension MemeViewController {
                 // if the user taps cancel, and later decides that he
                 // wants this feature, she has to tap the album button
                 // again, which start this process again.
-                PHPhotoLibrary.requestAuthorization {_ in }
+                PHPhotoLibrary.requestAuthorization { (newStatus: PHAuthorizationStatus) in
+                    if newStatus == PHAuthorizationStatus.authorized {
+                        self.loadPhoto(from: .photoLibrary)
+                    }
+                }
             }
         }
     }
@@ -261,6 +252,26 @@ extension MemeViewController {
         if UIApplication.shared.canOpenURL(settingsUrl) {
             UIApplication.shared.open(settingsUrl, completionHandler: nil)
         }
+    }
+    
+    fileprivate func loadPhoto(from: UIImagePickerControllerSourceType) {
+        switch from {
+        case .camera:
+            if !checkForCameraPermission() {
+                return
+            }
+        case .photoLibrary:
+            if !checkForPhotoLibraryPermission() {
+                return
+            }
+        default:
+            break
+        }
+        
+        let imagePicker = UIImagePickerController()
+        imagePicker.sourceType = from
+        imagePicker.delegate = self
+        present(imagePicker, animated: true, completion: nil)
     }
     
     @objc fileprivate func keyboardWillAppear(_ notification: Notification) {
