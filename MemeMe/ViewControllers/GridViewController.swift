@@ -81,8 +81,8 @@ extension GridViewController: UICollectionViewDataSource {
         let meme = memes[indexPath.item]
         
         cell.memeImage.image = meme.originalImage
-        cell.topText.text = meme.topText
-        cell.bottomText.text = meme.bottomText
+        cell.topText.attributedText = getAttributedText(text: meme.topText)
+        cell.bottomText.attributedText = getAttributedText(text: meme.bottomText)
         
         return cell
     }
@@ -126,6 +126,22 @@ extension GridViewController {
             itemsPerRow = itemsPerRowLandscape
         }
         setupFlowLayout()
+    }
+    
+    fileprivate func getAttributedText(text: String) -> NSAttributedString {
+        let paraStyle = NSMutableParagraphStyle()
+        paraStyle.alignment = NSTextAlignment.center
+        
+        let attributes: [String : Any] = [
+            NSStrokeWidthAttributeName: -2.0,
+            NSStrokeColorAttributeName: UIColor.black,
+            NSForegroundColorAttributeName: UIColor.white,
+            NSParagraphStyleAttributeName: paraStyle,
+            NSObliquenessAttributeName: 0.0,
+            NSFontAttributeName: UIFont(name: "HelveticaNeue-CondensedBlack", size: 4)!,
+            ]
+        
+        return NSAttributedString(string: text, attributes: attributes)
     }
 
 }
