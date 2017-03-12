@@ -113,7 +113,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="zEt-Q6-F8D">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
+                                <rect key="frame" x="8" y="8" width="304" height="511"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="e50-IC-80r">
                                     <size key="itemSize" width="133" height="131"/>
@@ -129,16 +129,16 @@
                                             <rect key="frame" x="0.0" y="0.0" width="133" height="131"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="memeImage" translatesAutoresizingMaskIntoConstraints="NO" id="yLk-gs-ruq">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yLk-gs-ruq">
                                                     <rect key="frame" x="0.0" y="0.0" width="133" height="131"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="topText" text="TOP" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zAH-fx-UXO">
-                                                    <rect key="frame" x="49.5" y="18" width="34" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TOP" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zAH-fx-UXO">
+                                                    <rect key="frame" x="49" y="18" width="34" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="bottomText" text="BOTTOM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aBR-oE-OSH">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BOTTOM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aBR-oE-OSH">
                                                     <rect key="frame" x="31" y="92" width="71" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -156,19 +156,38 @@
                                             <constraint firstItem="yLk-gs-ruq" firstAttribute="top" secondItem="QpI-75-9D3" secondAttribute="top" id="gkH-df-4tq"/>
                                             <constraint firstItem="aBR-oE-OSH" firstAttribute="centerX" secondItem="QpI-75-9D3" secondAttribute="centerX" id="wea-a8-lQb"/>
                                         </constraints>
+                                        <connections>
+                                            <outlet property="bottomText" destination="aBR-oE-OSH" id="G3x-PD-Yew"/>
+                                            <outlet property="memeImage" destination="yLk-gs-ruq" id="hov-SC-Mz7"/>
+                                            <outlet property="topText" destination="zAH-fx-UXO" id="aCp-Xk-KBj"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="f7s-yE-0eu" id="AZO-WM-m9k"/>
+                                    <outlet property="delegate" destination="f7s-yE-0eu" id="Q7U-IH-E9g"/>
+                                </connections>
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="zEt-Q6-F8D" secondAttribute="trailing" id="2E0-dx-nFu"/>
-                            <constraint firstItem="zEt-Q6-F8D" firstAttribute="leading" secondItem="Hcg-tJ-R4c" secondAttribute="leading" id="Imf-Tj-0Nd"/>
-                            <constraint firstItem="zEt-Q6-F8D" firstAttribute="top" secondItem="Hcg-tJ-R4c" secondAttribute="top" id="MZV-6i-Dnc"/>
+                            <constraint firstItem="zEt-Q6-F8D" firstAttribute="leading" secondItem="Hcg-tJ-R4c" secondAttribute="leading" constant="8" id="7Zp-sR-mD6"/>
                             <constraint firstItem="L7T-1k-fjI" firstAttribute="top" secondItem="zEt-Q6-F8D" secondAttribute="bottom" id="Q5z-Of-ilR"/>
+                            <constraint firstAttribute="trailing" secondItem="zEt-Q6-F8D" secondAttribute="trailing" constant="8" id="h7s-eT-Gcv"/>
+                            <constraint firstItem="zEt-Q6-F8D" firstAttribute="top" secondItem="Hcg-tJ-R4c" secondAttribute="top" constant="8" id="y2f-Za-s88"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Vdr-1s-DHZ"/>
+                    <navigationItem key="navigationItem" id="Vdr-1s-DHZ">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="tcA-P4-Ffu">
+                            <connections>
+                                <action selector="addMeme:" destination="f7s-yE-0eu" id="4p4-VL-xTJ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="flowLayout" destination="e50-IC-80r" id="YM5-UR-ILx"/>
+                        <outlet property="memesCollectionView" destination="zEt-Q6-F8D" id="osr-gz-jRt"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QRj-F3-kuq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

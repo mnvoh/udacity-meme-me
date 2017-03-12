@@ -10,8 +10,8 @@ import UIKit
 
 class MemeGridCollectionViewCell: UICollectionViewCell {
     
-    var memeImage: UIImageView!
-    var topText: UILabel!
-    var bottomText: UILabel!
+    @IBOutlet weak var memeImage: UIImageView!
+    @IBOutlet weak var topText: UILabel!
+    @IBOutlet weak var bottomText: UILabel!
     
 }

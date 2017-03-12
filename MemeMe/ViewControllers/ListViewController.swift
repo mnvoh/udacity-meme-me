@@ -18,6 +18,8 @@ class ListViewController: UIViewController {
     
     var memes = [Meme]() {
         didSet {
+            guard memesTableView != nil else { return }
+            
             memesTableView.reloadData()
         }
     }
