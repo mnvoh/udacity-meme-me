@@ -31,6 +31,7 @@ class GridViewController: UIViewController {
     struct Storyboard {
         static let cellReuseId = "memeGridCell"
         static let memeEditorId = "MemeEditor"
+        static let memeDetailId = "MemeDetail"
     }
     
     // MARK: - Overrides
@@ -90,7 +91,16 @@ extension GridViewController: UICollectionViewDataSource {
 
 
 // MARK: - COllectionView Delegate
-extension GridViewController: UICollectionViewDelegate {}
+extension GridViewController: UICollectionViewDelegate {
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let memeDetailView = storyboard?.instantiateViewController(withIdentifier: Storyboard.memeDetailId)
+            as! DetailViewController
+        memeDetailView.image = memes[indexPath.item].memedImage
+        navigationController?.pushViewController(memeDetailView, animated: true)
+    }
+    
+}
 
 // MARK: - private functions
 extension GridViewController {

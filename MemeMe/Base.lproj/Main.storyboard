@@ -218,6 +218,9 @@
                             <constraint firstItem="U8G-ik-i3x" firstAttribute="top" secondItem="RN4-Qs-VDC" secondAttribute="bottom" id="sPM-tR-9dZ"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="imageView" destination="U8G-ik-i3x" id="ru4-VC-Bpq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Arg-eP-3jG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
