@@ -16,7 +16,9 @@ class GridViewController: UIViewController {
     
     // MARK: - Properties
     let itemSpacing: CGFloat = 8
-    let itemsPerRow: Int = 3
+    let itemsPerRowPortrait = 3
+    let itemsPerRowLandscape = 6
+    var itemsPerRow: Int = 3
     
     var memes = [Meme]() {
         didSet {
@@ -36,15 +38,7 @@ class GridViewController: UIViewController {
         super.viewDidLoad()
         
         // setup flow layout
-        
-        // to make an even spacing between the cells, we have to divide the collection view
-        // width minus the total spacings by itemsPerRow
-        let totalItemSpacing = CGFloat(itemsPerRow + 1) * itemSpacing
-        let itemSize = (memesCollectionView.frame.width - totalItemSpacing) / CGFloat(itemsPerRow)
-        
-        flowLayout.minimumInteritemSpacing = itemSpacing
-        flowLayout.minimumLineSpacing = itemSpacing
-        flowLayout.itemSize = CGSize(width: itemSize, height: itemSize)
+        setupFlowLayout()
     }
     
     
@@ -53,7 +47,17 @@ class GridViewController: UIViewController {
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         memes = appDelegate.memes
+        
+        // add an observer so that we'll get notified when device orientation changes
+        NotificationCenter.default.addObserver(self, selector: #selector(deviceOrientationChanged(_:)), name: Notification.Name.UIDeviceOrientationDidChange, object: nil)
     }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        NotificationCenter.default.removeObserver(self, name: Notification.Name.UIDeviceOrientationDidChange, object: nil)
+    }
+    
     // MARK: - IBActions
     
     @IBAction func addMeme(_ sender: UIBarButtonItem) {
@@ -89,4 +93,29 @@ extension GridViewController: UICollectionViewDataSource {
 extension GridViewController: UICollectionViewDelegate {}
 
 // MARK: - private functions
-extension GridViewController {}
+extension GridViewController {
+
+    fileprivate func setupFlowLayout() {
+        // to make an even spacing between the cells, we have to divide the collection view
+        // width minus the total spacings by itemsPerRow
+        let totalItemSpacing = CGFloat(itemsPerRow + 1) * itemSpacing
+        let itemSize = (memesCollectionView.frame.width - totalItemSpacing) / CGFloat(itemsPerRow)
+        
+        flowLayout.minimumInteritemSpacing = itemSpacing
+        flowLayout.minimumLineSpacing = itemSpacing
+        flowLayout.itemSize = CGSize(width: itemSize, height: itemSize)
+    }
+    
+    @objc fileprivate func deviceOrientationChanged(_ notification: Notification) {
+        // first set the new items per row. We could just simply re-setup the flow layout
+        // but that way the items would become too tall on small devices
+        if UIDeviceOrientationIsPortrait(UIDevice.current.orientation) {
+            itemsPerRow = itemsPerRowPortrait
+        }
+        else {
+            itemsPerRow = itemsPerRowLandscape
+        }
+        setupFlowLayout()
+    }
+
+}
