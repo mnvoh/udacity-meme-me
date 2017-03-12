@@ -56,6 +56,16 @@ class MemeViewController: UIViewController {
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tabBarController?.tabBar.isHidden = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        tabBarController?.tabBar.isHidden = false
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillAppear(_:))
@@ -93,6 +103,7 @@ class MemeViewController: UIViewController {
             let meme = Meme(topText: topText, bottomText: bottomText, originalImage: originalImage,
                             memedImage: memedImage)
             meme.save()
+            _ = self.navigationController?.popViewController(animated: true)
         }
         activityViewController.popoverPresentationController?.sourceView = view
         present(activityViewController, animated: true, completion: nil)
@@ -103,6 +114,7 @@ class MemeViewController: UIViewController {
         topText.text = "TOP"
         bottomText.text = "BOTTOM"
         shareButton.isEnabled = false
+        _ = navigationController?.popViewController(animated: true)
     }
     
     @IBAction func loadImageFromCamera(_ sender: UIBarButtonItem) {

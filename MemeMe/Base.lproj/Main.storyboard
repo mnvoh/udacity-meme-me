@@ -260,24 +260,28 @@
                                         <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gpJ-DK-YtY" id="SWe-tQ-Ebm">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" restorationIdentifier="title" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="L9G-nw-fWP">
-                                                    <rect key="frame" x="73" y="0.0" width="232" height="43"/>
+                                                    <rect key="frame" x="74" y="0.0" width="231" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" restorationIdentifier="image" image="LaunchImage" id="Ra2-yk-BZe">
-                                                    <rect key="frame" x="15" y="0.0" width="43" height="43"/>
+                                                    <rect key="frame" x="15" y="0.0" width="44" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="tLp-mv-sBd" id="ZUn-XA-crA"/>
+                                    <outlet property="delegate" destination="tLp-mv-sBd" id="5rb-uN-Ryi"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -288,7 +292,21 @@
                             <constraint firstItem="g9p-aT-3hM" firstAttribute="top" secondItem="guu-Su-FGB" secondAttribute="top" id="l7h-TT-lX5"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="zzf-DR-PUJ"/>
+                    <navigationItem key="navigationItem" id="zzf-DR-PUJ">
+                        <barButtonItem key="leftBarButtonItem" title="Edit" id="Q9U-hS-ChW">
+                            <connections>
+                                <action selector="editMemes:" destination="tLp-mv-sBd" id="N4h-9l-ID3"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Pi3-qT-YHQ">
+                            <connections>
+                                <action selector="addMeme:" destination="tLp-mv-sBd" id="chs-om-ofY"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="memesTableView" destination="g9p-aT-3hM" id="lKU-NK-mfU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pCK-An-AyE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
