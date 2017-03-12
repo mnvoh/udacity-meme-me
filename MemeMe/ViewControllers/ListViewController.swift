@@ -14,7 +14,7 @@ class ListViewController: UIViewController {
     @IBOutlet weak var memesTableView: UITableView!
     
     // MARK: - Properties
-    let tableViewRowHeight: CGFloat = 44
+    let tableViewRowHeight: CGFloat = 64
     
     var memes = [Meme]() {
         didSet {
