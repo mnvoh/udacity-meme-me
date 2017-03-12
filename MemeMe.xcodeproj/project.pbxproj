@@ -37,6 +37,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		112FFBB91E75AEFE00E833F0 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				11EC9AFF1E733FB3000D1994 /* MemeViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		112FFBBA1E75AF0500E833F0 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		112FFBBB1E75AF0A00E833F0 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				1120AFE21E73F7860000F17E /* Meme.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		11EC9AF11E733FB3000D1994 = {
 			isa = PBXGroup;
 			children = (
@@ -56,13 +79,14 @@
 		11EC9AFC1E733FB3000D1994 /* MemeMe */ = {
 			isa = PBXGroup;
 			children = (
+				112FFBBB1E75AF0A00E833F0 /* Models */,
+				112FFBBA1E75AF0500E833F0 /* Views */,
+				112FFBB91E75AEFE00E833F0 /* ViewControllers */,
 				11EC9AFD1E733FB3000D1994 /* AppDelegate.swift */,
-				11EC9AFF1E733FB3000D1994 /* MemeViewController.swift */,
 				11EC9B011E733FB3000D1994 /* Main.storyboard */,
 				11EC9B041E733FB3000D1994 /* Assets.xcassets */,
 				11EC9B061E733FB3000D1994 /* LaunchScreen.storyboard */,
 				11EC9B091E733FB3000D1994 /* Info.plist */,
-				1120AFE21E73F7860000F17E /* Meme.swift */,
 			);
 			path = MemeMe;
 			sourceTree = "<group>";
