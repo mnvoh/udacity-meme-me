@@ -101,6 +101,13 @@ extension ListViewController: UITableViewDelegate {
         return tableViewRowHeight
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let memeDetailView = storyboard?.instantiateViewController(withIdentifier: Storyboard.detailViewId)
+            as! DetailViewController
+        memeDetailView.image = memes[indexPath.row].memedImage
+        navigationController?.pushViewController(memeDetailView, animated: true)
+    }
+    
 }
 
 // MARK: - Private functions
