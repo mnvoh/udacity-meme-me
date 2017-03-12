@@ -47,7 +47,14 @@ class ListViewController: UIViewController {
     }
     
     @IBAction func editMemes(_ sender: UIBarButtonItem) {
-        
+        if(memesTableView.isEditing == true) {
+            memesTableView.isEditing = false
+            self.navigationItem.leftBarButtonItem?.title = "Done"
+        }
+        else {
+            memesTableView.isEditing = true
+            self.navigationItem.leftBarButtonItem?.title = "Edit"
+        }
     }
 }
 
@@ -98,7 +105,10 @@ extension ListViewController: UITableViewDelegate {
 extension ListViewController {
     
     fileprivate func deleteRow(at indexPath: IndexPath) {
-        print("deleting row at \(indexPath)")
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        memes.remove(at: indexPath.row)
+        appDelegate.memes = memes
+        memesTableView.reloadData()
     }
     
 }
