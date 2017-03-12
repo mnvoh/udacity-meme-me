@@ -100,10 +100,10 @@
             </objects>
             <point key="canvasLocation" x="2162" y="401"/>
         </scene>
-        <!--View Controller-->
+        <!--Grid View Controller-->
         <scene sceneID="E8v-rb-hzd">
             <objects>
-                <viewController id="f7s-yE-0eu" sceneMemberID="viewController">
+                <viewController id="f7s-yE-0eu" customClass="GridViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="bD8-SM-yop"/>
                         <viewControllerLayoutGuide type="bottom" id="L7T-1k-fjI"/>
@@ -174,10 +174,10 @@
             </objects>
             <point key="canvasLocation" x="1042.5" y="1189.4366197183099"/>
         </scene>
-        <!--View Controller-->
+        <!--Detail View Controller-->
         <scene sceneID="B8g-QQ-MtH">
             <objects>
-                <viewController storyboardIdentifier="MemeDetail" id="uHl-Ld-GJq" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MemeDetail" id="uHl-Ld-GJq" customClass="DetailViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="RN4-Qs-VDC"/>
                         <viewControllerLayoutGuide type="bottom" id="heI-3q-Ftj"/>
@@ -240,10 +240,10 @@
             </objects>
             <point key="canvasLocation" x="83" y="401"/>
         </scene>
-        <!--View Controller-->
+        <!--List View Controller-->
         <scene sceneID="t3q-QV-5Yk">
             <objects>
-                <viewController id="tLp-mv-sBd" sceneMemberID="viewController">
+                <viewController id="tLp-mv-sBd" customClass="ListViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Uyq-2k-8rD"/>
                         <viewControllerLayoutGuide type="bottom" id="N7P-Xt-KlB"/>
