@@ -59,6 +59,8 @@
 		112FFBBA1E75AF0500E833F0 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				11EC9B011E733FB3000D1994 /* Main.storyboard */,
+				11EC9B061E733FB3000D1994 /* LaunchScreen.storyboard */,
 				112FFBBC1E75BB7E00E833F0 /* MemeGridCollectionViewCell.swift */,
 			);
 			path = Views;
@@ -70,6 +72,15 @@
 				1120AFE21E73F7860000F17E /* Meme.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		112FFBC41E75BCF700E833F0 /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				11EC9B041E733FB3000D1994 /* Assets.xcassets */,
+				11EC9B091E733FB3000D1994 /* Info.plist */,
+			);
+			path = SupportingFiles;
 			sourceTree = "<group>";
 		};
 		11EC9AF11E733FB3000D1994 = {
@@ -95,10 +106,7 @@
 				112FFBBA1E75AF0500E833F0 /* Views */,
 				112FFBB91E75AEFE00E833F0 /* ViewControllers */,
 				11EC9AFD1E733FB3000D1994 /* AppDelegate.swift */,
-				11EC9B011E733FB3000D1994 /* Main.storyboard */,
-				11EC9B041E733FB3000D1994 /* Assets.xcassets */,
-				11EC9B061E733FB3000D1994 /* LaunchScreen.storyboard */,
-				11EC9B091E733FB3000D1994 /* Info.plist */,
+				112FFBC41E75BCF700E833F0 /* SupportingFiles */,
 			);
 			path = MemeMe;
 			sourceTree = "<group>";
@@ -195,6 +203,7 @@
 				11EC9B021E733FB3000D1994 /* Base */,
 			);
 			name = Main.storyboard;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		11EC9B061E733FB3000D1994 /* LaunchScreen.storyboard */ = {
@@ -203,6 +212,7 @@
 				11EC9B071E733FB3000D1994 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			path = ..;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
